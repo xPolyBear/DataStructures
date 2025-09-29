@@ -2,7 +2,7 @@ public class W5D1Coding {
     public static void main(String[] args) {
         
         int size = 10000;
-        int[] result = GenerateRandomUnique(1, 11000, size);
+        int[] result = GenerateRandomUnique(1, 110000, size);
 
         long startMillisBubble = System.currentTimeMillis();
         BubbleSort(result);
@@ -14,8 +14,15 @@ public class W5D1Coding {
         long finishMillisSelection = System.currentTimeMillis();
         long timeElapsedMillisSelection = finishMillisSelection - startMillisSelection;
 
+        long startMillisInsertion = System.currentTimeMillis();
+        InsertionSort(result);
+        long finishMillisInsertion = System.currentTimeMillis();
+        long timeElapsedMillisInsertion = finishMillisInsertion - startMillisInsertion;
+
         System.out.println("Sorting a random array size of " + size + " took Bubble Sort " + timeElapsedMillisBubble + "ms to complete.");
         System.out.println("Sorting a random array size of " + size + " took Selection Sort " + timeElapsedMillisSelection + "ms to complete.");
+        System.out.println("Sorting a random array size of " + size + " took Insertion Sort " + timeElapsedMillisInsertion + "ms to complete.");
+
 
     }
 
@@ -101,5 +108,25 @@ public class W5D1Coding {
         return selectionArray;
     }
 
+    public static int[] InsertionSort(int[] randomArray) {
+
+        int[] insertionArray = new int[randomArray.length];
+
+        for (int i = 0; i < randomArray.length; i++) {
+            insertionArray[i] = randomArray[i];
+        }
+
+        for (int i = 1; i < insertionArray.length; i++) {
+            int current = i;
+            while (current > 0 && insertionArray[current] < insertionArray[current-1]) {
+
+                int temp = insertionArray[current];
+                insertionArray[current] = insertionArray[current - 1];
+                insertionArray[current - 1] = temp;
+                current--;
+            }
+        }
+        return insertionArray;
+    }
 
 }

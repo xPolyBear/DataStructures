@@ -239,7 +239,7 @@ public class W8D3Coding {
         return lowIndex;
     }
 
-    public static int MergeSort(int[] array, int start, int end) {
+    public static void MergeSort(int[] array, int start, int end) {
 
         if(start < end) {
             int middle = (start + end) / 2;
@@ -248,7 +248,6 @@ public class W8D3Coding {
             MergeSort(array, middle + 1, end);
             Merge(array, start, middle, end);
         }
-        return 0;
         
     }
 

@@ -4,37 +4,66 @@ public class BibleCoding2 {
     public static void main(String[] args) {
         System.out.println("");
        
-        System.out.println("Years based on the stated requirements: " + Bible2());
+        System.out.println("Years based on the stated requirements: " + People.Bible3());
     }
     
 
+    public static class People
+    {
+        int age;
+        int humansTaught;
 
-    public static int Bible2(){
+        public People(int age, int humansTaught) 
+		{
+			this.age = age;
+            this.humansTaught = humansTaught;
+		}
 
-        int maxAge = 72;
-        long amountOfHumans = 7700000000L;
-        int age = 18;
-        long humansTaught = 13L;
-        int totalYears = 0;
+        public static int Bible3()
+        {
+            int years = 0;
+            int maxAge = 72;
 
-        while(humansTaught < amountOfHumans) {
-            humansTaught = humansTaught + humansTaught * 2;
-            totalYears = totalYears + 3;
-            age = age + 3;
+            long amountOfHumans = 100000000L;//had to lower the amount of humans to make it so that it doesn't crash
+            long humansTaught = 13L;
 
-            if(age == 30) {
-                long babies = amountOfHumans / 2;
-                amountOfHumans = amountOfHumans + babies;
+            People[] people = new People[13];
+
+            for(int i = 0; i < 13; i++) {
+                people[i] = new People(18, 1);
             }
 
-            if(age > maxAge) {
-                age = maxAge;
+            while(humansTaught < amountOfHumans)
+            {
+                years = years + 3;
+
+                People[] newPeople = new People[people.length * 2];
+
+                for(int i = 0; i < people.length; i++) {//had to get help making sure that it makes new Disciples
+                    newPeople[i] = people[i];           //and not just teaching the same 13 disciples over and over
+                    newPeople[i + people.length] = new People(18, 1);
+                    
+                }
+                people = newPeople;
+
+
+                for(int i = 0; i < people.length; i++) {
+
+                    people[i].age = people[i].age + 3;
+
+                    if(people[i].age >= 18 && people[i].age <= maxAge) {
+                        humansTaught = humansTaught + people[i].humansTaught * 2;
+                    }
+
+                    if(people[i].age == 30 && i % 2 == 0) {
+                        amountOfHumans++;
+                    }
+                }
+
             }
+
+            return years;
         }
-
-        return totalYears;
-    }
-
-
+    }  
 
 }

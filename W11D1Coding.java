@@ -13,44 +13,44 @@ public class W11D1Coding {
         list.Print();
         System.out.println("");
 
-        System.out.println("Test 2 = Prepend: 6, 4");
-        list.Prepend(6);
+        System.out.println("Test 2 = Prepend: 4, 1");
         list.Prepend(4);
+        list.Prepend(1);
         list.Print();
         System.out.println("");
 
-        System.out.println("Test 3 = InsertAfter: Insert 5 after 7");
-        W11D1Coding.Node node7 = list.Search(7);
-        W11D1Coding.Node node5 = new W11D1Coding.Node(5);
-        if (node7 != null) {
-            list.InsertAfter(node7, node5);
-        }
-        list.Print();
-        System.out.println("");
-
-        System.out.println("Test 4 = InsertBefore: Insert 9 before 10");
+        System.out.println("Test 3 = InsertAfter: Insert 9 after 10");
         W11D1Coding.Node node10 = list.Search(10);
         W11D1Coding.Node node9 = new W11D1Coding.Node(9);
         if (node10 != null) {
-        list.InsertBefore(node10, node9);
+            list.InsertAfter(node10, node9);
         }
         list.Print();
         System.out.println("");
 
-        System.out.println("Test 5 = RemoveAfter: Remove Node After 4");
-        Node node4 = list.Search(4);
-        list.RemoveAfter(node4);
+        System.out.println("Test 4 = InsertBefore: Insert 5 before 3");
+        W11D1Coding.Node node3 = list.Search(3);
+        W11D1Coding.Node node5 = new W11D1Coding.Node(5);
+        if (node3 != null) {
+        list.InsertBefore(node3, node5);
+        }
         list.Print();
         System.out.println("");
 
-        System.out.println("Test 6 = RemoveBefore: Remove Node Before 8 ");
-        Node node8 = list.Search(8);
-        list.RemoveBefore(node8);
+        System.out.println("Test 5 = RemoveAfter: Remove Node After 1");
+        Node node1 = list.Search(1);
+        list.RemoveAfter(node1);
         list.Print();
         System.out.println("");
 
-        System.out.println("Test 7 = Search for:  7");
-        W11D1Coding.Node searchNode = list.Search(7);
+        System.out.println("Test 6 = RemoveBefore: Remove Node Before 2");
+        Node node2 = list.Search(2);
+        list.RemoveBefore(node2);
+        list.Print();
+        System.out.println("");
+
+        System.out.println("Test 7 = Search for: 8");
+        W11D1Coding.Node searchNode = list.Search(8);
         if (searchNode != null) {
             System.out.println("Found: " + searchNode.data);
         } else {
@@ -218,7 +218,7 @@ public class W11D1Coding {
             Node smallNode = currentNode;
             Node nextNode = currentNode.next;
             
-            while(nextNode != null ){
+            while(nextNode != null ) {
                 if((Integer)nextNode.data < (Integer)smallNode.data){
                     smallNode = nextNode;
                 }
@@ -237,7 +237,7 @@ public class W11D1Coding {
     } 
 
     public void Print() {
-        
+
         Node curNode = head;
         while (curNode != null) {
             System.out.print(curNode.data + " -> ");

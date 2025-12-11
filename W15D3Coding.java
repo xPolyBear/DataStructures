@@ -47,7 +47,7 @@ public class W15D3Coding {
         SearchTree.inOrderTraversal();
         System.out.println();
 
-        System.out.println("Search Tree Height: " + SearchTree.getHeight());
+        System.out.println("Height of the Resulting Search Tree: " + SearchTree.getHeight());
         System.out.println();
 
 
